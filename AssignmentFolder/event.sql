@@ -28,20 +28,6 @@ CREATE TABLE IF NOT EXISTS `event` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table event_db.event: ~4 rows (approximately)
-/*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` (`Id`, `eventName`, `startDate`, `endDate`, `startTime`, `endTime`, `dow`) VALUES
-	(739, 'ata', '2021-03-02', '2021-03-07', '00:00', '01:30', ' T W T F S S'),
-	(740, 'ata', '2021-03-08', '2021-03-14', '00:00', '01:30', ' M T W T F S S'),
-	(743, 'test', '2021-03-01', '2021-03-05', '00:00', '02:00', ' M T W T F'),
-	(744, 'test', '2021-03-08', '2021-03-12', '00:00', '02:00', ' M T W T F'),
-	(745, 'test', '2021-03-15', '2021-03-16', '00:00', '02:00', ' M T'),
-	(746, 'klk', '2021-03-06', '2021-03-07', '02:00', '02:30', ' S S'),
-	(747, 'klk', '2021-03-13', '2021-03-14', '02:00', '02:30', ' S S'),
-	(748, 'klk', '2021-03-20', '2021-03-21', '02:00', '02:30', ' S S'),
-	(749, 'klj', '2021-03-06', '2021-03-07', '04:30', '05:30', ' S S'),
-	(750, 'klj', '2021-03-13', '2021-03-14', '04:30', '05:30', ' S S');
-/*!40000 ALTER TABLE `event` ENABLE KEYS */;
 
 -- Dumping structure for table event_db.user
 CREATE TABLE IF NOT EXISTS `user` (
