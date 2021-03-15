@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Login</title>
+
+<link rel="stylesheet" href="assignment/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="assignment/js/jquery-3.3.1.slim.min.js"></script>
+<script src="assignment/js/bootstrap.bundle.min.js"></script>
+<script src="assignment/js/jquery-3.5.1.js"></script>
+<script src="assignment/js/popper.min.js"></script>
+<script src="assignment/js/bootstrap.min.js"></script>
+
+</head>
+
+<style>
+
+body{
+background: whitesmoke;
+}
+.userNameDiv {
+	margin-top: 80px;
+}
+
+.loginFormDiv {
+	background: white;
+	padding: 24px;
+	height: 430px
+}
+
+.se-pre-con {
+	display: none;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	opacity: 0.6;
+	background-image: url(assignment/image/loader.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #9a9a9a;
+}
+</style>
+
+<body>
+
+	<div class="se-pre-con"></div>
+	<!-- Navbar-->
+	<header class="header">
+		<nav class="navbar navbar-expand-lg navbar-light py-3">
+			<div class="container">
+				<!-- Navbar Brand -->
+				<a href="#" class="navbar-brand">
+					<h1>CompanyLogo</h1>
+				</a>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+				<img
+					src="assignment/image/calender2021.png"
+					alt="" class="img-fluid mb-3 d-none d-md-block">
+				<h1>Event Calender</h1>
+			</div>
+			<div class="col-md-7 col-lg-6 ml-auto loginFormDiv">
+				<h1>Log In</h1>
+				<div id="loginMessage" style="height: 20px"></div>
+				<div class="row">
+					<!-- User Name -->
+					<div class="input-group col-lg-12 mb-4 userNameDiv">
+						<div class="input-group-prepend ">
+							<span
+								class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-user text-muted"></i>
+							</span>
+						</div>
+						<input id="userName" type="text" name="userName"
+							placeholder="Enter User Name....."
+							class="form-control bg-white border-left-0 border-md">
+					</div>
+					<!-- Password -->
+					<div class="input-group col-lg-12 mb-4 ">
+						<div class="input-group-prepend">
+							<span
+								class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-lock text-muted"></i>
+							</span>
+						</div>
+						<input id="password" type="password" name="password"
+							placeholder="Enter Password"
+							class="form-control bg-white border-left-0 border-md">
+					</div>
+					<div class="input-group col-lg-12 mb-4 ">
+
+						<button class="btn btn-primary py-2" style="width: 100%"
+							onclick="login()">Login</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function login() {
+			$("#loginMessage").html("");
+			var userName = null;
+			var password = null;
+			userName = document.getElementById("userName").value;
+			password = document.getElementById("password").value;
+			if (userName == null || userName == "") {
+				alert("Kindly enter userName")
+				return false;
+			}
+			if (password == null || password == "") {
+				alert("Kindly enter password")
+				return false;
+			}
+			var data = {
+				"userName" : userName,
+				"password" : password
+
+			}
+			$(".se-pre-con").show();
+			$
+					.ajax({
+						url : '/Assignment/api/authontication',
+						type : 'POST',
+						data : JSON.stringify(data),
+						headers : {
+							'content-type' : 'application/json'
+						},
+						success : function(data) {
+							console.log(data);
+
+							$(".se-pre-con").hide();
+							if (data.serviceResponse != null
+									&& data.serviceStatus == "Success") {
+
+								localStorage.setItem('userName', userName);
+								window.location.href = "/Assignment/event";
+
+							} else {
+								$("#loginMessage")
+										.html(
+												"<div class='alert alert-danger style='width:100%'>Login failed ! Invalid UserName or Password...!</div>");
+							}
+						},
+						error : function(xhr, error) {
+							$(".se-pre-con").hide();
+							$("#loginMessage")
+									.html(
+											"<div class='alert alert-danger style='width:100%'>Login failed ! Something went wrong...!</div>");
+						}
+					});
+		}
+	</script>
+</body>
+</html>

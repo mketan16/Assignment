@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base href="/Assignment/assignment/">
+<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment</title>
+
+<link rel="stylesheet"
+	href="css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="css/jquery.timepicker.min.css">
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"
+	rel="stylesheet" />
+<script src="js/jquery-3.5.1.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.3/jquery.timepicker.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script src="js/angular.js"></script>
+<script
+	src="js/angular-ui-router.min.js"></script>
+<script
+	src="js/bootstrap.min.js"></script>
+</head>
+<style>
+.se-pre-con {
+	display: none;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	opacity: 0.6;
+	background-image: url(image/loader.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #9a9a9a;
+}
+
+body {
+	background-color: whitesmoke;
+}
+
+.container {
+	background-color: white;
+}
+</style>
+<body ng-app="assignApp">
+	<!-- Navigation -->
+	<!-- 	<nav
+		class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top"> -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light shadow ">
+		<div class="container">
+			<a class="navbar-brand">Company Logo</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link"
+						ui-sref="event">Event <span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link">About</a></li>
+					<li class="nav-item"><a class="nav-link">Services</a></li>
+					<li class="nav-item"><a class="nav-link">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container">
+
+		<div class="se-pre-con"></div>
+		<div ui-view></div>
+	</div>
+</body>
+<script src="angularjs/app.js"></script>
+<script src="angularjs/controller/eventController.js"></script>
+<script src="angularjs/service/eventService.js"></script>
+</html>

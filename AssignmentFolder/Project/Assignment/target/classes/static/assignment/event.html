@@ -1,0 +1,161 @@
+<style>
+#eventTable {
+	text-align: center;
+}
+
+.success {
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	display: none;
+}
+
+.failure {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+	display: none;
+}
+
+.alert-box {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+#alert-boxDiv {
+	height: 70px;
+}
+
+.required {
+	color: red;
+}
+
+.dataTables_length {
+	display: inline;
+}
+
+.dataTables_filter {
+	display: inline;
+	float: right;
+}
+
+.eventCardBody {
+	margin-bottom: 20px !important;
+	background: lightblue;
+}
+</style>
+
+<div class="container">
+	<div class="panel panel-default">
+		<div id="alert-boxDiv">
+			<div class="alert-box success">{{successMsg}}</div>
+			<div class="alert-box failure">{{errorMsg}}</div>
+		</div>
+		<div class="card-body eventCardBody">
+			<form class="form-horizontal" id="eventForm">
+				<div class="form-group row">
+					<label class="col-md-3 col-form-label">Event Name<span
+						class="required">*</span>:
+					</label>
+					<div class="col-md-9">
+						<input class="form-control" data-ng-model="eventObject.eventName">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-3 col-form-label">Date Range<span
+						class="required">*</span>:
+					</label>
+
+					<div class="col-md-3">
+						<div class="input-group mb-3">
+							<input type="text" class="form-control startDate"
+								placeholder="Start Date" data-ng-model="eventObject.startDate"
+								readonly aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<span class="input-group-text startDate" id="basic-addon2"><i
+									class="fa fa-calendar " aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="input-group mb-3">
+							<input type="text" class="form-control endDate"
+								placeholder="End Date" data-ng-model="eventObject.endDate"
+								readonly aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<span class="input-group-text endDate" id="basic-addon2"><i
+									class="fa fa-calendar" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-3 col-form-label">DOW (Day of week
+						when an event occurs)<span class="required">*</span>:
+					</label>
+					<div class="col-md-9">
+						<select name="DOW" id="DOW" data-ng-model="eventObject.dowType"
+							ng-init="eventObject.dowType = ''">
+							<option value="">Please select</option>
+							<option value="5">Weekdays (Mon-Fri)</option>
+							<option value="2">Weekend (Sat-Sun)</option>
+							<option value="7">Both</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-md-3 col-form-label">Time Range<span
+						class="required">*</span>:
+					</label>
+
+					<div class="col-md-3">
+						<div class="input-group mb-3">
+							<input type="text" class="form-control startTime" id="startTime" data-ng-model="eventObject.startTime"
+								placeholder="Start Date" readonly="readonly"
+								 aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<span class="input-group-text startTime" id="basic-addon2"><i
+									class="fa fa-clock-o" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="input-group mb-3">
+							<input type="text" class="form-control endTime" id="endTime" data-ng-model="eventObject.endTime"
+								placeholder="End Time"  readonly="readonly"
+								 aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<span class="input-group-text endTime" id="basic-addon2"><i
+									class="fa fa-clock-o" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-3 col-form-label"><button
+							class="btn btn-primary" type="submit" data-ng-click="saveEvent()">Submit</button></label>
+
+				</div>
+			</form>
+		</div>
+	</div>
+	<table id="eventTable"
+		class="table table-bordered bordered table-striped table-condensed datatable">
+		<thead>
+			<tr>
+				<th>Event id</th>
+				<th>Event Name</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>DOW (Day of week)</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+
