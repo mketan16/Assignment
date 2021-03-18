@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base href="/Employee/employee/">
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.29/angular-ui-router.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="employeeApp">
+	<div class="navbar navbar-inverse ">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- contains toggle and brand -->
+				<button class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse" type="button">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a href="" class="navbar-brand">Bootstrap theme</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul id="navlist" class="nav navbar-nav">
+					<li class="nav"><a ui-sref="employee">Employee</a></li>
+					<li class="nav"><a ui-sref="department">Department</a></li>
+					<!--  <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="">Action</a></li>
+                <li><a href="">Another action</a></li>
+                <li><a href="">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="">Separated link</a></li>
+                <li><a href="">One more separated link</a></li>
+              </ul>
+            </li> -->
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="se-pre-con"></div>
+		<div ui-view></div>
+	</div>
+
+</body>
+<!-- <script type="text/javascript">
+	$('#navlist li').click(function(e) {
+    e.preventDefault(); //prevent the link from being followed
+    $('#navlist li').removeClass('active');
+    $(this).addClass('active');
+});
+</script> -->
+<script src="angularjs/app.js"></script>
+<script src="angularjs/controller/employeeController.js"></script>
+<script src="angularjs/service/employeeService.js"></script>
+<script src="angularjs/controller/departmentController.js"></script>
+<script src="angularjs/service/departmentService.js"></script>
+</html>

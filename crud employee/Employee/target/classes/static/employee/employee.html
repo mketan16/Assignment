@@ -1,0 +1,157 @@
+
+<div class="container">
+
+
+	<!-- Button trigger modal -->
+	<button id="openAddEmpModal" type="button" class="btn btn-primary">Add
+		Employee</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="addEmpModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-keyboard="false">
+
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="addEmpModalLongTitle">Add Employe</h3>
+				</div>
+				<div class="modal-body">
+					<form class="well form-horizontal addEmp" id="addEmpForm">
+						<fieldset>
+							<legend>
+								<center>
+									<h2>
+										<b>New Employee Form</b>
+									</h2>
+								</center>
+							</legend>
+							<br>
+
+							<div class="form-group">
+								<label class="col-md-4 control-label">Employee Name</label>
+								<div class="col-md-8 inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+										<input name="empName" placeholder="Employee Name"
+											data-ng-model="addEmpObject.empName" class="form-control"
+											type="text">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">Department</label>
+								<div class="col-md-8 selectContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-list"></i></span>
+										<select name="department" class="form-control selectpicker"
+											id="AddEmpDeptId">
+											<option value="">Select your Department</option>
+											<option data-ng-repeat="dept in deptList" value="{{dept.id}}">{{dept.deptName}}</option>
+										</select>
+
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" id="closeAddEmpModal">Close</button>
+					<button type="button" class="btn btn-primary"
+						data-ng-click="saveEmp()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="editEmpModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-keyboard="false">
+
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="addEmpModalLongTitle">Edit Employe</h3>
+				</div>
+				<div class="modal-body">
+					<form class="well form-horizontal addEmp" id="editEmpForm">
+						<fieldset>
+							<legend>
+								<center>
+									<h2>
+										<b>Edit Employee Form</b>
+									</h2>
+								</center>
+							</legend>
+							<br>
+
+							<div class="form-group">
+								<label class="col-md-4 control-label">Employee Id</label>
+								<div class="col-md-8 inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+										<input name="empId" placeholder="Employee ID"
+											data-ng-model="editEmpObject.id" class="form-control"
+											type="text" disabled>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">Employee Name</label>
+								<div class="col-md-8 inputGroupContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+										<input name="empName" placeholder="Employee Name"
+											data-ng-model="editEmpObject.empName" class="form-control"
+											type="text">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">Department</label>
+								<div class="col-md-8 selectContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-list"></i></span>
+										<select name="department" class="form-control selectpicker"
+											data-ng-model="editEmpObject.deptId"
+											data-ng-options="dept.id as dept.deptName for dept in deptList">
+											<option value="">Select your Department</option>
+										</select>
+
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" id="closeEditEmpModal">Close</button>
+					<button type="button" class="btn btn-primary"
+						data-ng-click="editEmp()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<table id="empTable" class="table table-striped table-bordered"
+		style="width: 100%">
+		<thead>
+			<tr>
+				<th>EmpId</th>
+				<th>Emp Name</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="emp in empList">
+				<td>{{emp.id}}</td>
+				<td>{{emp.empName}}</td>
+				<td><button class="btn btn-primary fa fa-edit"
+						data-ng-click="openEditEmpModal(emp)"></button></td>
+				<td><button class="btn btn-danger fa fa-trash"
+						data-ng-click="deleteEmp(emp)"></button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!-- /.container -->
